@@ -1,17 +1,12 @@
 #-*- coding:utf-8 -*-
+import web
 
-def app(environ, start_response):
-    status = '200 OK'
-    headers = [('Content-type', 'text/html')]
-    start_response(status, headers)
-    body=["Hello XiaoMa!\n"]
-    return body
+urls = ("/.*", "hello")
+app = web.application(urls, globals())
 
-from bae.core.wsgi import WSGIApplication
-application = WSGIApplication(app)
+class hello:
+    def GET(self):
+        return 'Hello, world!'
 
-import os
-if 'SERVER_SOFTWARE' in os.environ:
-    print "This is BAE environ"
-else:
-    print "This is local environ"
+if __name__ == "__main__":
+    app.run()
