@@ -1,7 +1,7 @@
 #################
 ## Eclipse
 #################
-.idea/
+.idea
 .idea/*
 *.pydevproject
 .project
